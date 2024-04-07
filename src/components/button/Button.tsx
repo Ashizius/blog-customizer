@@ -1,6 +1,7 @@
 import { Text } from 'components/text';
 
 import styles from './Button.module.scss';
+import { MouseEventHandler } from 'react';
 
 export const Button = ({
 	title,
@@ -19,3 +20,4 @@ export const Button = ({
 		</button>
 	);
 };
+// onClick={/*onClick*/}

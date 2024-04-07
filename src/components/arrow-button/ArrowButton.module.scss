@@ -13,7 +13,7 @@
 	transition: transform 0.5s ease;
 }
 
-.container_open {
+.containerOpen {
 	transform: translate(616px);
 }
 
@@ -25,6 +25,15 @@
 	transition: transform 0.5s ease;
 }
 
-.arrow_open {
+.arrowOpen {
 	transform: rotate(0deg);
+}
+
+.container:hover {
+	background-color: #FFC802;
+}
+
+.container:active {
+	background-color: #787878;
+;
 }
