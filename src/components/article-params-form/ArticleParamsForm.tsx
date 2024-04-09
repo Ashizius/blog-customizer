@@ -4,7 +4,6 @@ import { Button } from 'components/button';
 import styles from './ArticleParamsForm.module.scss';
 import clsx from 'clsx';
 import {
-	CSSProperties,
 	PropsWithChildren,
 	SyntheticEvent,
 	useCallback,
@@ -12,7 +11,6 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { defaultArticleState } from 'src/constants/articleProps';
 
 type TEventFunction = (e?: SyntheticEvent) => void;
 export type TArticleParamsFormProps = {
@@ -84,8 +82,7 @@ export const ArticleParamsForm = (
 						) /* добавляет элемент в список исключений закрытия меню */
 				}>
 				<form className={styles.form} onSubmit={submit}>
-					<h2 className={styles.heading}
-					>Задайте параметры</h2>
+					<h2 className={styles.heading}>Задайте параметры</h2>
 					{props?.children}
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' onClick={reset} />
