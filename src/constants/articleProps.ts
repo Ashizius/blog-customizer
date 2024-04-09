@@ -181,8 +181,8 @@ export const allStatesList = {
 	fontColors,
 	backgroundColors,
 	contentWidthArr,
-	fontSizeOptions
-}
+	fontSizeOptions,
+};
 
 export type ArticleStateType = typeof defaultArticleState;
 export type AllStatesListType = typeof allStatesList;

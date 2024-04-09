@@ -3,8 +3,10 @@
 	left: 0;
 	width: 616px;
 	height: 100%;
-	overflow: scroll;
-	transform: translate(-616px);
+	//overflow: scroll;
+	overflow: auto;
+	//transform: translate(-616px);
+	transform: translate(calc(100% * -1));
 	transition: transform 0.5s ease;
 }
 
@@ -12,12 +14,23 @@
 	transform: translate(0);
 }
 
+.heading {
+	font-family: 'Open Sans';
+	font-size: 31px;
+	font-weight: 800;
+	line-height: 42.22px;
+	text-align: left;
+	text-transform: uppercase;
+}
+
 .form {
 	display: flex;
+	row-gap: 50px;
 	flex-shrink: 0;
 	flex-direction: column;
 	box-sizing: border-box;
-	width: 616px;
+//	width: 616px;
+	width: 100%;
 	height: auto;
 	min-height: 100%;
 	padding: 50px 31px;

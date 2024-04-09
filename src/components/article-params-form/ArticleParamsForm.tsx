@@ -4,6 +4,7 @@ import { Button } from 'components/button';
 import styles from './ArticleParamsForm.module.scss';
 import clsx from 'clsx';
 import {
+	CSSProperties,
 	PropsWithChildren,
 	SyntheticEvent,
 	useCallback,
@@ -11,8 +12,7 @@ import {
 	useRef,
 	useState,
 } from 'react';
-
-
+import { defaultArticleState } from 'src/constants/articleProps';
 
 type TEventFunction = (e?: SyntheticEvent) => void;
 export type TArticleParamsFormProps = {
@@ -30,17 +30,20 @@ export const ArticleParamsForm = (
 			menuRef.current.add(element);
 		}
 	};
-	const closeForm = useCallback((e: KeyboardEvent|MouseEvent) => {
-		const key=(e instanceof KeyboardEvent)?e.key:undefined;
-		if (((!menuRef.current.has(e.target))&&(key===undefined))||(key==='Escape')) {
+	const closeForm = useCallback((e: KeyboardEvent | MouseEvent) => {
+		const key = e instanceof KeyboardEvent ? e.key : undefined;
+		if (
+			(!menuRef.current.has(e.target) && key === undefined) ||
+			key === 'Escape'
+		) {
 			setOpen(false);
 		}
 	}, []);
 
-	const toggleForm = useCallback((e: KeyboardEvent|MouseEvent) => {
+	const toggleForm = useCallback((e: KeyboardEvent | MouseEvent) => {
 		if (e.currentTarget !== document) {
-			const key=(e instanceof KeyboardEvent)?e.key:undefined;
-			if ((key===' ')||(key==='Enter')||(e.type === 'click')){
+			const key = e instanceof KeyboardEvent ? e.key : undefined;
+			if (key === ' ' || key === 'Enter' || e.type === 'click') {
 				setOpen((open) => !open);
 				pushRef(e.target);
 			}
@@ -58,14 +61,14 @@ export const ArticleParamsForm = (
 			}
 		}
 	}, [open]);
-	const submit = (e?:SyntheticEvent) => {
+	const submit = (e?: SyntheticEvent) => {
 		props.onSubmit?.(e);
-		setOpen(false);
-	}
-	const reset = (e?:SyntheticEvent) => {
+		setOpen(false); //закрывает меню при нажатии, если убрать, то не будет
+	};
+	const reset = (e?: SyntheticEvent) => {
 		props.onReset?.(e);
-		setOpen(false);
-	}
+		setOpen(false); //закрывает меню при нажатии, если убрать, то не будет
+	};
 	return (
 		<>
 			<ArrowButton open={open} onClick={toggleForm} />
@@ -75,13 +78,18 @@ export const ArticleParamsForm = (
 					[styles.containerOpen]: open,
 				})}
 				onClick={
-					(e) => pushRef(e.target) /* добавляет элемент в список исключений закрытия меню */
+					(e) =>
+						pushRef(
+							e.target
+						) /* добавляет элемент в список исключений закрытия меню */
 				}>
 				<form className={styles.form} onSubmit={submit}>
+					<h2 className={styles.heading}
+					>Задайте параметры</h2>
 					{props?.children}
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' onClick={reset} />
-						<Button title='Применить' type='submit'/>
+						<Button title='Применить' type='submit' />
 					</div>
 				</form>
 			</aside>
