@@ -25,8 +25,7 @@ const root = createRoot(domNode);
 
 const App = () => {
 	const [articleState, setArticleState] = useState(defaultArticleState);
-	const articleOptions = useRef({ ...defaultArticleState }); //чтобы не перерендеривалась страница при каждой смене настроек.
-	//const closeRef=useRef<HTMLDivElement|null>(null);
+	const articleOptions = useRef({ ...defaultArticleState }); //чтобы не перерендеривалась страница при каждой смене настроек до применения.
 	const setArticleOptions = (options: ArticleStateType) => {
 		articleOptions.current = options;
 	};
@@ -63,8 +62,6 @@ const App = () => {
 		</div>
 	);
 };
-
-// children={<ArticleParameters/>}
 
 root.render(
 	<StrictMode>

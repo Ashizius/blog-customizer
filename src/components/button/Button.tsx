@@ -19,4 +19,4 @@ export const Button = ({
 		</button>
 	);
 };
-// onClick={/*onClick*/}
+

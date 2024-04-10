@@ -28,6 +28,7 @@ export const ArticleParamsForm = (
 			menuRef.current.add(element);
 		}
 	};
+
 	const closeForm = useCallback((e: KeyboardEvent | MouseEvent) => {
 		const key = e instanceof KeyboardEvent ? e.key : undefined;
 		if (
@@ -93,4 +94,4 @@ export const ArticleParamsForm = (
 		</>
 	);
 };
-//onClick={apply}
+
