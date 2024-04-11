@@ -176,7 +176,7 @@ export const defaultArticleState = {
 	fontSizeOption: fontSizeOptions[0],
 };
 
-export const allStatesList = {
+export const allStatesList = { // собранный список настроек в один объект, чтобы не таскать их россыпью
 	fontFamilyOptions,
 	fontColors,
 	backgroundColors,

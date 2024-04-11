@@ -21,14 +21,14 @@ export type TArticleParamsFormProps = {
 export const ArticleParamsForm = (
 	props: PropsWithChildren<TArticleParamsFormProps>
 ) => {
-	const [open, setOpen] = useState<boolean | null>(null);
+	const [open, setOpen] = useState<boolean | null>(null); //null даёт понять, что меню ещё ни разу не открывалось
 	const menuRef = useRef<Set<EventTarget | null>>(new Set()); //список элементов по которым не срабатывает закрытие меню
 	const pushRef = (element: EventTarget | null) => {
 		if (element) {
 			menuRef.current.add(element);
 		}
 	};
-
+// дальше две функции определены через хук, чтобы можно было удалять слушатель при скрытии меню
 	const closeForm = useCallback((e: KeyboardEvent | MouseEvent) => {
 		const key = e instanceof KeyboardEvent ? e.key : undefined;
 		if (
@@ -50,10 +50,10 @@ export const ArticleParamsForm = (
 	}, []);
 
 	useEffect(() => {
-		if (open !== null) {
+		if (open !== null) { //на случай, если форма ни разу не открывалась ещё
 			if (open) {
 				document.addEventListener('click', closeForm);
-				document.addEventListener('keydown', closeForm);
+				document.addEventListener('keydown', closeForm); //закрытие по Escape
 			} else {
 				document.removeEventListener('click', closeForm);
 				document.removeEventListener('keydown', closeForm);

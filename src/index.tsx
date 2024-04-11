@@ -26,9 +26,10 @@ const root = createRoot(domNode);
 const App = () => {
 	const [articleState, setArticleState] = useState(defaultArticleState);
 	const articleOptions = useRef({ ...defaultArticleState }); //чтобы не перерендеривалась страница при каждой смене настроек до применения.
-	const setArticleOptions = (options: ArticleStateType) => {
+	const setArticleOptions = (options: ArticleStateType) => { //просто для единообразия с articleState
 		articleOptions.current = options;
 	};
+
 	const submit = (e?: SyntheticEvent) => {
 		e?.preventDefault();
 		setArticleState({ ...articleOptions.current });

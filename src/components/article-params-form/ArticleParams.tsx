@@ -23,7 +23,7 @@ const isSimilar = (option1: ArticleStateType, option2: ArticleStateType) => {
 export const ArticleParams = (props: TFullParameters) => {
 	const [articleOptions, setArticleOptions] = useState(props.current);
 	const { onChange, current, all } = props;
-
+// задан отдельным компонентом, чтобы можно было разделить контейнер настроек и сами настройки
 	useEffect(() => {
 		!isSimilar(current, articleOptions)
 			? setArticleOptions({ ...current })
