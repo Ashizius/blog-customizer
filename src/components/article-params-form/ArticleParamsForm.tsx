@@ -20,7 +20,7 @@ import { Select } from '../select';
 import { Text } from '../text';
 import { RadioGroup } from '../radio-group';
 import { Separator } from '../separator';
-import { useCloseForm } from './hooks/useCloseForm';
+import { useClose } from './hooks/useClose';
 
 export type TSetOptions = (options: ArticleStateType) => void;
 
@@ -37,7 +37,7 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 		useState<ArticleStateType>(defaultOption);
 	const menuRef = useRef<HTMLElement | null>(null); //ссылка на элемент по которыму не срабатывает закрытие меню
 
-	useCloseForm(
+	useClose(
 		{
 			onClose: () => {
 				setIsMenuOpen(false);

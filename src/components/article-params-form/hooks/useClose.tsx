@@ -5,7 +5,7 @@ type TUseClose = {
 	rootRef: React.RefObject<HTMLElement>;
 };
 
-export function useCloseForm({ onClose, rootRef }: TUseClose, isOpen: boolean) {
+export function useClose({ onClose, rootRef }: TUseClose, isOpen: boolean) {
 	useEffect(() => {
 		if (!isOpen) return;
 
